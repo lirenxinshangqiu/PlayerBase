@@ -1,7 +1,10 @@
 package com.kk.taurus.avplayer;
 
 import android.app.Application;
+import android.content.Context;
 import android.os.Environment;
+
+import androidx.multidex.MultiDex;
 
 import com.kk.taurus.exoplayer.ExoMediaPlayer;
 import com.kk.taurus.ijkplayer.IjkPlayer;
@@ -32,6 +35,12 @@ public class App extends Application {
 
     public static App get(){
         return instance;
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        MultiDex.install(base);
     }
 
     @Override
